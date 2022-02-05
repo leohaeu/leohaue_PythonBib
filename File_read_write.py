@@ -36,7 +36,8 @@ class File_read_write():
 
     def writeFile(self, input, paramter):
         '''
-        paramter: "a"=append, "w"=overwrite
+        input: string
+        paramter: string -> "a"=append, "w"=overwrite
         '''
         f = open( (self.pathName + self.fileName_write), paramter)
         f.write( input )
