@@ -9,35 +9,36 @@ import string
 ###+++###+++###+++###+++###+++###+++###+++###+++###+++###+++###+++###+++###
 ### CLASS
 
-class Strin_manipulation():
+class String_manipulation():
     
-    def __init__(self, inString) -> None:
-        self.inputString: string
-        self.inputString = inString
-        self.outputString: string
-        self.outputString = None
+    def __init__(self, origString : string) -> None:
+        self.originalString: string
+        self.originalString = origString
+        self.manipulatedString: string
 
-    def getInString(self) -> string:
-        return self.inputString
+    def getOriginalString(self) -> string:
+        return self.originalString
 
-    def setOutString(self, changedString: string) -> None:
-        self.outputString = changedString
+    def setManipulatedString(self, changedString: string) -> None:
+        self.manipulatedString = changedString
 
-    def getOutString(self) -> string:
-        return self.outputString
+    def getManipulatedString(self) -> string:
+        return self.manipulatedString
 
     ###+++###+++###+++###
     # Manipulation
 
     def kommaToDot_betweenNumbers(self) -> None:
-        inString = self.getInString()
-        self.setOutString( re.sub('(?<=\d),(?=\d)', '.', inString) )
+        origString = self.getOriginalString()
+        self.setManipulatedString( re.sub('(?<=\d),(?=\d)', '.', origString) )
         
 
 ###+++###+++###+++###+++###+++###+++###+++###+++###+++###+++###+++###+++###
 ### TEST
 
-string_manipulation_obj = Strin_manipulation("Das ist die Testzahl: 21,34 | Ausserdem bfindet sich hier , ein komma und eine zweite Zahl 45,67 ")
+'''
+string_manipulation_obj = String_manipulation("Das ist die Testzahl: 21,34 | Ausserdem befindet sich hier , ein komma und eine zweite Zahl 45,67 ")
 string_manipulation_obj.kommaToDot_betweenNumbers()
-print(string_manipulation_obj.getInString() )
-print(string_manipulation_obj.getOutString() )
+print(string_manipulation_obj.getOriginalString() )
+print(string_manipulation_obj.getManipulatedString() )
+'''
