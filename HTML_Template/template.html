@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>{{page_title_text}}</title>
+        <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div id="report">
+            <h1>{{title_text}}</h1>
+            <p>{{text}}</p>
+            <img src={{pictureName}} width="650">
+            <p>{{dictionary}}</p>
+            {{dataFrame.to_html()}}
+        </div>
+
+        <p>Der "Button" geht nur ohne Bild und oder Tablle!</p>
+        <button onclick="generatePDF()"> Download PDF </button>
+
+    </body>
+</html>

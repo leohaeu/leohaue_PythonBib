@@ -31,9 +31,11 @@ class HTML_creator(superHTML_PDF):
         self.template = self.env.get_template(htmlTemplateName)
 
     def renderHTMLtemplate(self) -> None:
-        dictionary={"Wank": [1780], "Kramer": [1985], "Alpspitze": [2628], "Zugspitze": [2962]}
-        df = pd.DataFrame(data=dictionary)
-        df = df.fillna(' ').T # Füllt "NaN" in Zelle
+        dictionary={"Wank": 1780, "Kramer": 1985, "Alpspitze": 2628, "Zugspitze": 2962}
+        columns = ['Berg Name', 'Seehoehe in Meter']
+        df = pd.DataFrame(data=dictionary.items(), columns=columns)
+        #df = df.fillna(' ').T # Invertiert den DF
+        #df = df.set_index('Berg Name') 
         self.html = self.template.render(
                        page_title_text='HTMLreport',
                        title_text='Picture, PandaDF, Dictionary',
@@ -55,6 +57,9 @@ class HTML_to_PDF(superHTML_PDF):
         self.css = CSS(string='''
             @page {size: A4; margin: 1cm;} 
             th, td {border: 1px solid black;}
+            img {border-radius: 3%;
+                 padding: 5px;
+                 width: 650px;}
             ''')
 
     def creatPDF(self) -> None: 
@@ -63,7 +68,7 @@ class HTML_to_PDF(superHTML_PDF):
 ###+++###+++###+++###+++###+++###+++###+++###+++###+++###+++###+++###+++###
 ### TEST
 
-HTML_obj = HTML_creator("Test_Data_HTML_PDF/", "html_report_jinja.html", "HTML_PDF_Data", "template.html")
+HTML_obj = HTML_creator("Test_Data_HTML_PDF/", "html_report_jinja.html", "HTML_Template", "template.html")
 HTML_obj.renderHTMLtemplate()
 HTML_obj.creatHTMLwithTemplate()
 
